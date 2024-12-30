@@ -1,5 +1,7 @@
 ![banner](https://user-images.githubusercontent.com/12774588/210178528-2eb928f9-fbad-414b-9f69-a57550d05363.png)
 
+> **Note**: This is a maintenance fork of [@ts-react/form](https://github.com/iway1/react-ts-form). The goal is to keep dependencies up to date and fix critical bugs, not to add new features. For new features, please contribute to the [original repository](https://github.com/iway1/react-ts-form).
+
 <p align="center">Build maintainable, typesafe forms faster 🏃💨</p>
 
 <p align="center">

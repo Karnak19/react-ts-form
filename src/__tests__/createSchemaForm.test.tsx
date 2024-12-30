@@ -1883,6 +1883,10 @@ describe("createSchemaForm", () => {
         const form = useForm<z.infer<typeof schema>>({
           mode: "onChange",
           resolver: zodResolver(schema),
+          defaultValues: {
+            fieldOne: "",
+            fieldTwo: "",
+          },
         });
         const values = {
           ...form.getValues(),
@@ -1904,7 +1908,7 @@ describe("createSchemaForm", () => {
             onSubmit={() => {}}
           >
             {(fields) => {
-              const { isDirty } = useFormState();
+              const { isDirty } = useFormState({ control: form.control });
               const [state, setState] = useState(0);
               useEffect(() => {
                 setState(1);
