@@ -12,6 +12,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - run: pnpm install && pnpm test
 
   publish-npm:
@@ -23,16 +26,23 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: Setup git config
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
       - name: Build App
         run: |
-          pnpm && pnpm build
+          pnpm install && pnpm build
+      - name: Update version
+        run: |
+          npm version ${{ github.event.release.tag_name }} --no-git-tag-version
       - name: Publish with pnpm
         run: |
-          echo "publishing with version ${{ github.event.release.tag_name }}"
-          pnpm publish --access public --new-version ${{ github.event.release.tag_name }}
+          echo "publishing version ${{ github.event.release.tag_name }}"
+          pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
