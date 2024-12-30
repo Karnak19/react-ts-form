@@ -3,6 +3,7 @@ coverage
 .yarn
 .vscode
 lib
+dist
 .env
 
 src/playground.tsx
