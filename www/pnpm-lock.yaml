@@ -7,7 +7,7 @@ specifiers:
   '@docusaurus/theme-common': ^2.3.1
   '@docusaurus/types': ^2.3.1
   '@mdx-js/react': ^1.6.22
-  '@tsconfig/docusaurus': ^1.0.5
+  '@tsconfig/docusaurus': ^1.0.7
   autoprefixer: ^10.4.13
   clsx: ^1.2.1
   docusaurus-tailwindcss: ^0.1.0
@@ -34,7 +34,7 @@ devDependencies:
   '@docusaurus/module-type-aliases': 2.3.1_sfoxds7t5ydpegc3knd667wn6m
   '@docusaurus/theme-common': 2.3.1_qy6u2m3twle75rldwm5f2xep3a
   '@docusaurus/types': 2.3.1_sfoxds7t5ydpegc3knd667wn6m
-  '@tsconfig/docusaurus': 1.0.6
+  '@tsconfig/docusaurus': 1.0.7
   autoprefixer: 10.4.14_postcss@8.4.21
   docusaurus-tailwindcss: 0.1.0_@docusaurus+core@2.3.1
   postcss: 8.4.21
@@ -2474,8 +2474,8 @@ packages:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
 
-  /@tsconfig/docusaurus/1.0.6:
-    resolution: {integrity: sha512-1QxDaP54hpzM6bq9E+yFEo4F9WbWHhsDe4vktZXF/iDlc9FqGr9qlg+3X/nuKQXx8QxHV7ue8NXFazzajsxFBA==}
+  /@tsconfig/docusaurus/1.0.7:
+    resolution: {integrity: sha512-ffTXxGIP/IRMCjuzHd6M4/HdIrw1bMfC7Bv8hMkTadnePkpe0lG0oDSdbRpSDZb2rQMAgpbWiR10BvxvNYwYrg==}
     dev: true
 
   /@types/body-parser/1.19.2:
@@ -3281,7 +3281,7 @@ packages:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   /chrome-trace-event/1.0.3:
     resolution: {integrity: sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==}
@@ -4346,8 +4346,8 @@ packages:
   /fs.realpath/1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
-  /fsevents/2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+  /fsevents/2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
