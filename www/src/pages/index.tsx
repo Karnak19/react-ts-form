@@ -16,7 +16,7 @@ function HomepageHeader() {
 
   useEffect(() => {
     // fetch github stars from api
-    fetch("https://api.github.com/repos/iway1/react-ts-form")
+    fetch("https://api.github.com/repos/Karnak19/react-ts-form")
       .then((res) => res.json())
       .then((data) => setGithubStars(data.stargazers_count));
   }, []);
@@ -37,7 +37,7 @@ function HomepageHeader() {
                 ? "bg-white text-black hover:text-black"
                 : "bg-background text-white hover:text-white"
             }`}
-            to="https://github.com/iway1/react-ts-form"
+            to="https://github.com/Karnak19/react-ts-form"
             target="_blank"
           >
             <div className="grid grid-cols-3 items-center w-full">

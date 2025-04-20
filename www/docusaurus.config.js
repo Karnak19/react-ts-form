@@ -18,7 +18,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "iway1", // Usually your GitHub org/user name.
+  organizationName: "Karnak19", // Usually your GitHub org/user name.
   projectName: "react-ts-form", // Usually your repo name.
 
   onBrokenLinks: "throw",
@@ -41,7 +41,7 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/iway1/react-ts-form/tree/main/www/",
+          editUrl: "https://github.com/Karnak19/react-ts-form/tree/main/www/",
         },
 
         theme: {
@@ -129,7 +129,7 @@ const config = {
             label: "API",
           },
           {
-            href: "https://github.com/iway1/react-ts-form",
+            href: "https://github.com/Karnak19/react-ts-form",
             label: "GitHub",
             position: "right",
           },
