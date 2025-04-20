@@ -55,7 +55,7 @@ export type ReactComponentWithRequiredProps<
   Props extends ReactProps
   // ExtraProps extends Record<string, any> = {}
 > =
-  | ((props: Props) => JSX.Element)
+  | ((props: Props) => React.JSX.Element)
   | (ForwardRefExoticComponent<Props> & RefAttributes<unknown>);
 
 export type MappingItem<PropType extends ReactProps> = readonly [
@@ -86,7 +86,7 @@ export function useFormResultValueChangedErrorMesssage() {
 /**
  * @internal
  */
-export type FormComponent = "form" | ((props: any) => JSX.Element);
+export type FormComponent = "form" | ((props: any) => React.JSX.Element);
 
 export type ExtraProps = {
   /**
@@ -113,20 +113,20 @@ export type UnwrapEffects<
   : never;
 
 function checkForDuplicateTypes(array: RTFSupportedZodTypes[]) {
-  var combinations = array.flatMap((v, i) =>
+  const combinations = array.flatMap((v, i) =>
     array.slice(i + 1).map((w) => [v, w] as const)
   );
   for (const [a, b] of combinations) {
     printWarningsForSchema(a);
     printWarningsForSchema(b);
-    if (isZodTypeEqual(a!, b)) {
+    if (isZodTypeEqual(a, b)) {
       duplicateTypeError();
     }
   }
 }
 
 function checkForDuplicateUniqueFields(array: RTFSupportedZodTypes[]) {
-  let usedIdsSet = new Set<string>();
+  const usedIdsSet = new Set<string>();
   for (const type of array) {
     if (isSchemaWithHiddenProperties(type)) {
       if (usedIdsSet.has(type._def[HIDDEN_ID_PROPERTY]))
@@ -236,8 +236,8 @@ export type RenderedFieldMap<
               UnwrapEffects<SchemaType>["shape"][key]["element"],
               Prev[Level]
             >[]
-          : JSX.Element[]
-        : JSX.Element;
+          : React.JSX.Element[]
+        : React.JSX.Element;
     };
 
 export type CustomChildRenderProp<SchemaType extends RTFFormSchemaType> = (
@@ -381,7 +381,7 @@ export function createTsForm<
     FormComponent?: FormType;
     /**
      * Modify which props the form control and such get passed to when rendering components. This can make it easier to integrate existing
-     * components with `@ts-react/form` or modify its behavior. The values of the object are the names of the props to forward the corresponding
+     * components with `@karnak19/ts-react-form` or modify its behavior. The values of the object are the names of the props to forward the corresponding
      * data to.
      * @default {
      *  name: "name",
@@ -442,6 +442,7 @@ export function createTsForm<
       return uf;
     })();
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {
       if (form && defaultValues) {
         form.reset(defaultValues);
@@ -473,10 +474,10 @@ export function createTsForm<
           return Object.entries(shape).reduce((accum, [subKey, subType]) => {
             accum[subKey] = renderComponentForSchemaDeep(
               subType,
-              props && props[subKey] ? (props[subKey] as any) : undefined,
+              props?.[subKey] ? (props[subKey] as any) : undefined,
               subKey,
               `${prefixedKey}.${subKey}`,
-              currentValue && currentValue[subKey]
+              currentValue?.[subKey]
             );
             return accum;
           }, {} as RenderedObjectElements);
@@ -502,7 +503,7 @@ export function createTsForm<
 
       // TODO: we could define a LeafType in the recursive PropType above that only gets applied when we have an actual mapping then we could typeguard to it or cast here
       // until then this thinks (correctly) that fieldProps might not have beforeElement, afterElement at this level of the prop tree
-      const fieldProps = props && props[key] ? (props[key] as any) : {};
+      const fieldProps = props?.[key] ? (props[key] as any) : {};
 
       const { beforeElement, afterElement } = fieldProps;
 
@@ -570,13 +571,13 @@ export function createTsForm<
     return (
       <FormProvider {..._form}>
         <ActualFormComponent {...formProps} onSubmit={submitFn}>
-          {renderBefore && renderBefore({ submit: submitFn })}
+          {renderBefore?.({ submit: submitFn })}
           <FormChildren
             renderedFields={renderedFields}
             customChildRenderProp={children}
           />
 
-          {renderAfter && renderAfter({ submit: submitFn })}
+          {renderAfter?.({ submit: submitFn })}
         </ActualFormComponent>
       </FormProvider>
     );
@@ -631,22 +632,21 @@ function useSubmitter<SchemaType extends RTFFormSchemaType>({
     return r;
   }
 
-  function submit(data: z.infer<SchemaType>) {
-    return resolver(removeUndefined(data), {} as any, {} as any).then(
-      async (e) => {
-        const errorKeys = Object.keys(e.errors);
-        if (!errorKeys.length) {
-          await onSubmit(e.values);
-          return;
-        }
-        for (const key of errorKeys) {
-          setError(
-            key as any,
-            (e.errors as any)[key] as unknown as ErrorOption
-          );
-        }
-      }
+  async function submit(data: z.infer<SchemaType>) {
+    const result = await Promise.resolve(
+      resolver(removeUndefined(data), {} as any, {} as any)
     );
+    if (!Object.keys(result.errors).length) {
+      await onSubmit(result.values);
+      return;
+    }
+    const errors = result.errors as Record<string, ErrorOption>;
+    for (const key of Object.keys(errors)) {
+      const error = errors[key];
+      if (error) {
+        setError(key as any, error);
+      }
+    }
   }
 
   return {
@@ -663,8 +663,8 @@ const isZodArray = (schema: RTFSupportedZodTypes): schema is ZodArray<any> =>
   schema._def.typeName === ZodFirstPartyTypeKind.ZodArray;
 
 export type RenderedElement =
-  | JSX.Element
-  | JSX.Element[]
+  | React.JSX.Element
+  | React.JSX.Element[]
   | RenderedObjectElements
   | RenderedElement[];
 export type RenderedObjectElements = { [key: string]: RenderedElement };
@@ -672,12 +672,14 @@ export type RenderedObjectElements = { [key: string]: RenderedElement };
 /***
  * Can be useful in CustomChildRenderProp to flatten the rendered field map at a given leve
  */
-export function flattenRenderedElements(val: RenderedElement): JSX.Element[] {
+export function flattenRenderedElements(
+  val: RenderedElement
+): React.JSX.Element[] {
   return Array.isArray(val)
     ? val.flatMap((obj) => flattenRenderedElements(obj))
     : typeof val === "object" && val !== null && !React.isValidElement(val)
-    ? Object.values(val).reduce((accum: JSX.Element[], val) => {
+    ? Object.values(val).reduce((accum: React.JSX.Element[], val) => {
         return accum.concat(flattenRenderedElements(val as any));
-      }, [] as JSX.Element[])
+      }, [] as React.JSX.Element[])
     : [val];
 }

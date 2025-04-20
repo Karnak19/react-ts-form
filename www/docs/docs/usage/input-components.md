@@ -25,4 +25,4 @@ function TextField() {
 }
 ```
 
-<code>@ts-react/form</code> will magically connect your component to the appropriate field with this hook.
+<code>@karnak19/ts-react-form</code> will magically connect your component to the appropriate field with this hook.

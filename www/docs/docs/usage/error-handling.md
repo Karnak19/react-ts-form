@@ -8,7 +8,7 @@ Handling error messages is extremely important for UX. `react-ts-form` makes it 
 
 ## Accessing Error Messages in your component
 
-`@ts-react/form` also returns an <code>error</code> object that's more accurately typed than `react-hook-forms`'s that you can use to show errors:
+`@karnak19/ts-react-form` also returns an <code>error</code> object that's more accurately typed than `react-hook-forms`'s that you can use to show errors:
 
 ```tsx
 function MyComponent() {

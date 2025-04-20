@@ -9,7 +9,7 @@ This allows components to access information about the type and validation rules
 Returns schema-related information for any field
 
 ```tsx
-import { useFieldInfo } from "@ts-react/form";
+import { useFieldInfo } from "@karnak19/ts-react-form";
 
 const MyCustomField = () => {
   const { label, placeholder, isOptional, zodType } = useFieldInfo();
@@ -29,7 +29,7 @@ Returns schema-related information for a ZodString field
 
 
 ```tsx
-import { useStringFieldInfo } from "@ts-react/form";
+import { useStringFieldInfo } from "@karnak19/ts-react-form";
 
 const MyStringCustomField = () => {
     
@@ -55,7 +55,7 @@ const MyStringCustomField = () => {
 Returns schema-related information for a ZodNumber field
 
 ```tsx
-import { useNumberFieldInfo } from "@ts-react/form";
+import { useNumberFieldInfo } from "@karnak19/ts-react-form";
 
 const MyNumberCustomField = () => {
   const { label, placeholder, description, isOptional, minValue, maxValue, isInt, zodType } =
@@ -80,7 +80,7 @@ const MyNumberCustomField = () => {
 Returns schema-related information for a ZodNumber field
 
 ```tsx
-import { useDateFieldInfo } from "@ts-react/form";
+import { useDateFieldInfo } from "@karnak19/ts-react-form";
 
 const MyDateCustomField = () => {
   const { label, placeholder, description, maxDate, minDate, zodType } =

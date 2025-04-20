@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ## Typesafety on component props
 
-Based on your component mapping, <code>@ts-react/form</code> knows which field should receive which props:
+Based on your component mapping, <code>@karnak19/ts-react-form</code> knows which field should receive which props:
 
 ```tsx
 const mapping = [
@@ -35,7 +35,7 @@ const Schema = z.object({
 
 ## Required props
 
-`@ts-react/form` is also aware of which props are required, so it will make sure you always pass required props to your components:
+`@karnak19/ts-react-form` is also aware of which props are required, so it will make sure you always pass required props to your components:
 
 ![Required Props](https://user-images.githubusercontent.com/12774588/210124307-c456ec95-ed9e-47fe-b6f5-a4e7327aab85.png)
 
@@ -55,4 +55,4 @@ return (
 );
 ```
 
-Fixed! We get all the same typesafety of writing out the full jsx.
+Fixed! We get all the same typesafety of writing out the full React.JSX.

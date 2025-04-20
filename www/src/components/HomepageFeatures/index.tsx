@@ -3,7 +3,7 @@ import { useColorMode } from "@docusaurus/theme-common";
 
 type FeatureItem = {
   title: string;
-  description: JSX.Element;
+  description: React.JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
@@ -49,7 +49,7 @@ function Feature({ title, description }: FeatureItem) {
   );
 }
 
-export default function HomepageFeatures(): JSX.Element {
+export default function HomepageFeatures(): React.JSX.Element {
   const { isDarkTheme } = useColorMode();
   const background = isDarkTheme ? "" : "bg-white";
   const text = isDarkTheme ? "text-white" : "text-black";

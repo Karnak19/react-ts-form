@@ -6,7 +6,7 @@ sidebar_position: 12
 
 ## Quick Labels / Placeholders
 
-`@ts-react/form` provides a way to quickly add labels / placeholders via `zod`'s `.describe()` method:
+`@karnak19/ts-react-form` provides a way to quickly add labels / placeholders via `zod`'s `.describe()` method:
 
 ```tsx
 const FormSchema = z.object({
@@ -15,7 +15,7 @@ const FormSchema = z.object({
 });
 ```
 
-The `//` syntax separates the label and placeholder. `@ts-react/form` will make these available via the `useDescription()` hook:
+The `//` syntax separates the label and placeholder. `@karnak19/ts-react-form` will make these available via the `useDescription()` hook:
 
 ```ts
 function TextField() {

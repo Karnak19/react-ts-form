@@ -110,7 +110,7 @@ const FormWithSubmit = ({
   children,
   ...props
 }: {
-  children: JSX.Element[];
+  children: React.JSX.Element[];
   onSubmit: () => void;
 }) => (
   <form {...props}>

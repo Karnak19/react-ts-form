@@ -724,7 +724,7 @@ describe("createSchemaForm", () => {
     waitFor(() => expect(submitting).toBe(false));
   });
 
-  it("should throw an error if useTsController is called outside of a @ts-react/form rendered component", () => {
+  it("should throw an error if useTsController is called outside of a @karnak19/ts-react-form rendered component", () => {
     // hello 100% test coverage =D
     jest.spyOn(console, "error").mockImplementation(() => {});
     function C() {

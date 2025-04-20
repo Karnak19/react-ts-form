@@ -43,7 +43,7 @@ Make sure you have `"strict": true` in your tsconfig.json compilerOptions and ma
 Install package and dependencies with your preferred package manager:
 
 ```sh
-yarn add @ts-react/form
+yarn add @karnak19/ts-react-form
 
 # required peer dependencies
 yarn add zod react-hook-form @hookform/resolvers
@@ -122,4 +122,4 @@ Note that you can still compile with older versions of typescript and the type c
 ## Limitations
 
 - Doesn't support class components
-- `@ts-react/form` does not yet support "dependent field props", meaning you can't change one field component based on the value of another, but it's a feature we plan on adding soon.
+- `@karnak19/ts-react-form` does not yet support "dependent field props", meaning you can't change one field component based on the value of another, but it's a feature we plan on adding soon.

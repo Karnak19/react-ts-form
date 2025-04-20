@@ -7,7 +7,7 @@ const shownWarnings = {
 };
 
 function err(message: string) {
-  console.warn(`@ts-react/form: ${message}`);
+  console.warn(`@karnak19/ts-react-form: ${message}`);
 }
 
 export function duplicateTypeError() {

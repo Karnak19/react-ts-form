@@ -9,7 +9,7 @@ Install package and dependencies with your preferred package manager:
 ### Install package
 
 ```bash
-npm install @ts-react/form
+npm install @karnak19/ts-react-form
 ```
 
 ### Required peer dependencies
@@ -25,7 +25,7 @@ Or use yarn / pnpm
 Create a zod-to-component mapping to map zod schemas to your components then create your form with `createTsForm()` (typically once per project):
 
 ```tsx
-import { createTsForm } from "@ts-react/form";
+import { createTsForm } from "@karnak19/ts-react-form";
 import { z } from "zod";
 
 // create the mapping

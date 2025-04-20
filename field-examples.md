@@ -1,6 +1,6 @@
 # Example Fields
 
-These can be a good starting points for your fields with `@ts-react/form`
+These can be a good starting points for your fields with `@karnak19/ts-react-form`
 
 1. [Select](#select)
 2. [Text Field](#text-field)
